@@ -1,0 +1,23 @@
+<form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+  <div class="container">
+    <div class="col-sm-8 offset-sm-2">
+      <p>Add New Employee</p>
+      <div class="mb-3 form-group">
+        <label class="form-label">Employee Name</label>
+        <input type="text" class="form-control" placeholder="Enter employee name" formControlName="name">
+        <!-- <span *ngIf="name.invalid">Employee name is required</span> -->
+      </div>
+
+      <div class="mb-3 form-group">
+        <label class="form-label">Department</label>
+        <select class="form-control" formControlName="deptId">
+          <option *ngFor="let dept of department$ | async" value="{{dept.id}}">{{dept.name}}
+          </option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-sm btn-success">Save</button> &nbsp;<a class="btn btn-sm btn-warning" routerLink="/employee">Cancel</a>
+    </div>
+  </div>
+</form>
+
+

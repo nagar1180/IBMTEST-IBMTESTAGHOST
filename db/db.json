@@ -1,0 +1,43 @@
+{
+  "employees": [
+    {
+      "id": 1,
+      "name": "Mike"
+    },
+    {
+      "id": 2,
+      "name": "Saim"
+    },
+    {
+      "id": 3,
+      "name": "Robert"
+    },
+    {
+      "id": 4,
+      "name": "Juli"
+    },
+    {
+      "name": "qwwe",
+      "deptId": 1,
+      "id": 5
+    }
+  ],
+  "departments": [
+    {
+      "id": 1,
+      "name": "HR"
+    },
+    {
+      "id": 2,
+      "name": "Operation"
+    },
+    {
+      "id": 3,
+      "name": "Networking"
+    },
+    {
+      "id": 4,
+      "name": "Sys Admin"
+    }
+  ]
+}
