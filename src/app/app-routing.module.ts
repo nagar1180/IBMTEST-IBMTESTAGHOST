@@ -10,7 +10,7 @@ import { DepartmentService } from './service/department.service';
 const routes: Routes = [
 {path:"employee", component:EmployeeComponent},
 {path:"employee/add", component:AddemployeeComponent},
-{path:"employee/edit:id", component:EditemployeeComponent},
+{path:"employee/edit/:id", component:EditemployeeComponent},
 {path:"department", component:DepartmentComponent}
 ];
 

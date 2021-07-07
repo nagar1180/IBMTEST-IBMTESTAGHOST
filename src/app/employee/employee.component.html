@@ -21,12 +21,12 @@
   </thead>
   <tbody>
     <tr *ngFor="let emp of employees$ | async">
-      <th scope="row">{{emp.empid}}</th>
-      <td>{{emp.empname}}</td>
-      <td>{{emp.deptname}}</td>
+      <th scope="row">{{emp.empId}}</th>
+      <td>{{emp.empName}}</td>
+      <td>{{emp.deptName}}</td>
       <td>
-        <a routerLink="/employee/edit/{{emp.empid}}">Edit</a>&nbsp;
-        <a routerLink="/employee/edit/{{emp.empid}}">Detail</a>&nbsp;
+        <a [routerLink]="['/employee/edit', emp.empId]" class="btn btn-sm btn-primary">Edit</a>&nbsp;
+        <a class="btn btn-sm btn-danger" (click)="onDelete(emp.deptId)">Delete</a>&nbsp;
       </td>
     </tr>
   </tbody>

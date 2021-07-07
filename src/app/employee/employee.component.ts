@@ -15,9 +15,13 @@ export class EmployeeComponent implements OnInit {
   employees$ = new Observable<IEmployee[]>();
 
   ngOnInit(): void {
-    //this.employees$ =  this.service.getAll();
-    this.service.getAll().subscribe((data)=>{
-      console.log(data);
-    })
+    this.employees$ =  this.service.getAll();
+    // this.service.getAll().subscribe((data)=>{
+    //   console.log(data);
+    // })
+  }
+
+  onDelete(id: Number){
+    console.log(id);
   }
 }

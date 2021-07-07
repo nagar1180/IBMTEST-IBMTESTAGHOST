@@ -1,6 +1,6 @@
 export interface IEmployee{
-empid : number,
-empname : string,
+empId : number,
+empName : string,
 deptId : number,
-deptname : string
+deptName : string
 }

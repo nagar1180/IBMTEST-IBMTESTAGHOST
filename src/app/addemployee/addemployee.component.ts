@@ -28,18 +28,18 @@ export class AddemployeeComponent implements OnInit {
   }
   initializeForm() :void {
     this.employeeForm = this.fb.group({
-      name: new FormControl('',Validators.required),
+      empName: new FormControl('',[Validators.required, Validators.maxLength(3), Validators.maxLength(10)]),
       deptId :new FormControl(1,Validators.required),
     });
   }
 
 
   onSubmit(): void{
+    //console.log(this.employeeForm.value);
      this.empService.saveEmployee(this.employeeForm.value).subscribe((result)=>{
-       console.log(result);
+      this.router.navigate(['/employee']);
      })
-     this.router.navigate(['/employee']);
   }
-  name(){ return this.employeeForm.get('name');}
+  empName(){ return this.employeeForm.get('empName');}
   dept(){ return this.employeeForm.get('deptId')}
 }

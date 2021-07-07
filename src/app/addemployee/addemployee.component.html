@@ -4,8 +4,10 @@
       <p>Add New Employee</p>
       <div class="mb-3 form-group">
         <label class="form-label">Employee Name</label>
-        <input type="text" class="form-control" placeholder="Enter employee name" formControlName="name">
-        <!-- <span *ngIf="name.invalid">Employee name is required</span> -->
+        <input type="text" class="form-control" placeholder="Enter employee name" formControlName="empName">
+        <div class="alert alert-danger" *ngIf="employeeForm.controls['empName'].hasError('required')">Employee name is required</div>
+        <div class="alert alert-danger" *ngIf="employeeForm.controls['empName'].hasError('minlength')">Please enter atleast 3 characters</div>
+        <div class="alert alert-danger" *ngIf="employeeForm.controls['empName'].hasError('maxlength')">Name can't exceed 10 characters</div>
       </div>
 
       <div class="mb-3 form-group">
@@ -15,7 +17,7 @@
           </option>
         </select>
       </div>
-      <button type="submit" class="btn btn-sm btn-success">Save</button> &nbsp;<a class="btn btn-sm btn-warning" routerLink="/employee">Cancel</a>
+      <button [disabled]="employeeForm.invalid" type="submit" class="btn btn-sm btn-success">Save</button> &nbsp;<a class="btn btn-sm btn-warning" routerLink="/employee">Cancel</a>
     </div>
   </div>
 </form>

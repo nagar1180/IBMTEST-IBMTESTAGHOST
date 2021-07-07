@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
 import { IDepartment } from 'src/model/department.model';
-import { Identifiers } from '@angular/compiler';
-
+import {environment} from '../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class DepartmentService {
-  baseUrl="http://localhost:3000/";
+  baseUrl= environment.baseUrl;
   constructor(private http:HttpClient) { }
 
   getAll(){
