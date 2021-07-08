@@ -18,7 +18,7 @@ export class EditemployeeComponent implements OnInit {
 
   department$ = new Observable<IDepartment[]>();
    employeeForm = new FormGroup({
-    empName: new FormControl('',Validators.required),
+    empName: new FormControl('',[Validators.required, Validators.minLength(3), Validators.maxLength(15)]),
     deptId: new FormControl('0',Validators.required),
   });
   constructor(private route: ActivatedRoute,

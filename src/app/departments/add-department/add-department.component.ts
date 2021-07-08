@@ -24,7 +24,7 @@ export class AddDepartmentComponent implements OnInit {
   }
   initializeForm() :void {
     this.deptForm = this.fb.group({
-      deptName: new FormControl('',[Validators.required, Validators.minLength(3), Validators.maxLength(10)]),
+      deptName: new FormControl('',[Validators.required, Validators.minLength(3), Validators.maxLength(15)]),
 
     });
   }
@@ -33,11 +33,9 @@ export class AddDepartmentComponent implements OnInit {
 
 
   onSubmit(): void{
-    this.router.navigate(['/department']);
-    //console.log(this.employeeForm.value);
-     //this.deptService.saveDept(this.employeeForm.value).subscribe((result)=>{
-    //   this.router.navigate(['/department']);
-    //  })
+     this.deptService.save(this.deptForm.value).subscribe((result)=>{
+      this.router.navigate(['/department']);
+     })
   }
 
 }

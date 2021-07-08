@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { DepartmentService } from 'src/app/service/department.service';
 import { IDepartment } from 'src/model/department.model';
@@ -12,29 +12,37 @@ import { IDepartment } from 'src/model/department.model';
 })
 export class EditDepartmentComponent implements OnInit {
 
-  deptForm!: FormGroup;
+
   department$ = new Observable<IDepartment[]>();
-  constructor(
+
+  deptForm = new FormGroup({
+    deptName: new FormControl('',[Validators.required, Validators.minLength(3), Validators.maxLength(15)]),
+  });
+
+  constructor(private route: ActivatedRoute,
     private fb: FormBuilder,
     private deptService : DepartmentService,
     private router : Router) {
    }
 
    ngOnInit(): void {
-    this.department$ = this.deptService.getAll();
-    this.initializeForm()
+      const id = +this.route.snapshot.paramMap.get('id')!;
+      this.deptService.getById(id).subscribe((data)=>{
+      this.initializeForm(data);
+     });
   }
-  initializeForm() :void {
+  initializeForm(dept : IDepartment) :void {
     this.deptForm = this.fb.group({
-      deptName: new FormControl('',[Validators.required, Validators.minLength(3), Validators.maxLength(10)])
+      deptName: new FormControl(dept.deptName,[Validators.required, Validators.minLength(3), Validators.maxLength(15)])
     });
   }
 
 
   onSubmit(): void{
-      this.deptService.saveEmployee(this.deptForm.value).subscribe((result)=>{
-      this.router.navigate(['/employee']);
+      const id = +this.route.snapshot.paramMap.get('id')!;
+      this.deptService.update(id, this.deptForm.value).subscribe((result)=>{
+      this.router.navigate(['/department']);
      })
   }
-  deptName(){ return this.deptForm.get('empName');}
+  deptName(){ return this.deptForm.get('deptName');}
 }

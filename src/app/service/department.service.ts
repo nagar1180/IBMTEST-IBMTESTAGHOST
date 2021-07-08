@@ -16,7 +16,7 @@ export class DepartmentService {
     return this.http.get<IDepartment>(`${this.baseUrl}department/${id}`);
    }
 
-   saveEmployee(data : IDepartment){
+   save(data : IDepartment){
      return this.http.post(`${this.baseUrl}department`, data);
    }
 

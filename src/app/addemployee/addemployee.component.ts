@@ -29,7 +29,7 @@ export class AddemployeeComponent implements OnInit {
   }
   initializeForm() :void {
     this.employeeForm = this.fb.group({
-      empName: new FormControl('',[Validators.required, Validators.minLength(3), Validators.maxLength(10)]),
+      empName: new FormControl('',[Validators.required, Validators.minLength(3), Validators.maxLength(15)]),
       deptId :new FormControl(0, [Validators.required, Validators.min(1), Validators.max(999)]),
     });
   }

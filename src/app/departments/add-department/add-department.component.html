@@ -7,7 +7,7 @@
         <input type="text" class="form-control" placeholder="Enter department name" formControlName="deptName">
         <div class="alert alert-danger" *ngIf="deptForm.invalid && (deptForm.dirty || deptForm.touched) && deptForm.controls['deptName'].hasError('required')">Department name is required</div>
         <div class="alert alert-danger" *ngIf="deptForm.invalid && (deptForm.dirty || deptForm.touched) && deptForm.controls['deptName'].hasError('minlength')">Please enter atleast 3 characters</div>
-        <div class="alert alert-danger" *ngIf="deptForm.invalid && (deptForm.dirty || deptForm.touched) && deptForm.controls['deptName'].hasError('maxlength')">Name can't exceed 10 characters</div>
+        <div class="alert alert-danger" *ngIf="deptForm.invalid && (deptForm.dirty || deptForm.touched) && deptForm.controls['deptName'].hasError('maxlength')">Name can't exceed 15 characters</div>
 
         <!-- <div *ngIf="deptForm.invalid && (deptForm.dirty || deptForm.touched)" class="alert alert-danger">
 
