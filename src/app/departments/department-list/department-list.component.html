@@ -1,0 +1,33 @@
+<h1>Departments</h1>
+<br>
+<!-- <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+ Add Employee
+</button> -->
+
+<a type="button" class="btn btn-success" routerLink="/department/add">
+  Add Department
+</a>
+<br>
+<br>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Department Name</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let dept of departments$ | async">
+      <th scope="row">{{dept.deptId}}</th>
+      <td>{{dept.deptName}}</td>
+      <td>
+        <a [routerLink]="['/department/edit', dept.deptId]" class="btn btn-sm btn-primary">Edit</a>&nbsp;
+        <a class="btn btn-sm btn-danger" (click)="onDelete(dept.deptId)">Delete</a>&nbsp;
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+

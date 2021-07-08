@@ -15,10 +15,12 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 })
 
 export class EditemployeeComponent implements OnInit {
-  employeeForm!: FormGroup;
-  employee!: IEmployee;
-  department$ = new Observable<IDepartment[]>();
 
+  department$ = new Observable<IDepartment[]>();
+   employeeForm = new FormGroup({
+    empName: new FormControl('',Validators.required),
+    deptId: new FormControl('0',Validators.required),
+  });
   constructor(private route: ActivatedRoute,
     private router: Router,
     private empservice : EmployeeService,
@@ -34,16 +36,21 @@ export class EditemployeeComponent implements OnInit {
   }
 
   initializeForm(employee: IEmployee) :void {
-    this.employeeForm = this.fb.group({
-      empName: new FormControl(this.employee.empName,Validators.required),
-      deptId: new FormControl(this.employee.deptId,Validators.required),
+    this.employeeForm.setValue({
+      empName: employee.empName,
+      deptId: employee.deptId
     });
   }
 
   onSubmit(){
-      this.empservice.update(this.employeeForm.value).subscribe((result)=>{
+      const id = +this.route.snapshot.paramMap.get('id')!;
+      this.empservice.update(id, this.employeeForm.value).subscribe((result)=>{
       this.router.navigate(['/employee']);
      })
   }
+
+  empName(){ return this.employeeForm.get('empName');}
+  deptId(){ return this.employeeForm.get('deptId')}
+
 }
 

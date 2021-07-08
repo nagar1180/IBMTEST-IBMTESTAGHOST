@@ -1,0 +1,31 @@
+<form [formGroup]="deptForm" (ngSubmit)="onSubmit()">
+  <div class="container">
+    <div class="col-sm-8 offset-sm-2">
+      <p>Add New Department</p>
+      <div class="mb-3 form-group">
+        <label class="form-label">Department Name</label>
+        <input type="text" class="form-control" placeholder="Enter department name" formControlName="deptName">
+        <div class="alert alert-danger" *ngIf="deptForm.invalid && (deptForm.dirty || deptForm.touched) && deptForm.controls['deptName'].hasError('required')">Department name is required</div>
+        <div class="alert alert-danger" *ngIf="deptForm.invalid && (deptForm.dirty || deptForm.touched) && deptForm.controls['deptName'].hasError('minlength')">Please enter atleast 3 characters</div>
+        <div class="alert alert-danger" *ngIf="deptForm.invalid && (deptForm.dirty || deptForm.touched) && deptForm.controls['deptName'].hasError('maxlength')">Name can't exceed 10 characters</div>
+
+        <!-- <div *ngIf="deptForm.invalid && (deptForm.dirty || deptForm.touched)" class="alert alert-danger">
+
+          <div *ngIf="deptForm.errors?.required">
+            Name is required.
+          </div>
+          <div *ngIf="deptForm.errors?.minlength">
+            Name must be at least 4 characters long.
+          </div>
+          <div *ngIf="deptForm.errors?.maxlength">
+            Name cannot be Bob.
+          </div>
+          </div> -->
+
+      </div>
+      <button [disabled]="deptForm.invalid" type="submit" class="btn btn-sm btn-success">Save</button> &nbsp;<a class="btn btn-sm btn-warning" routerLink="/department">Cancel</a>
+    </div>
+  </div>
+</form>
+
+

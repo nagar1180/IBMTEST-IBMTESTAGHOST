@@ -22,6 +22,8 @@ export class EmployeeComponent implements OnInit {
   }
 
   onDelete(id: Number){
-    console.log(id);
+    this.service.delete(id).subscribe((data)=>{
+      this.employees$ =  this.service.getAll();
+    });
   }
 }

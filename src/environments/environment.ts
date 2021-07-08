@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl:"https://ibmtestapi2021.azurewebsites.net/api/"
+  baseUrl:"https://localhost:44366/api/"
 };
 
 /*

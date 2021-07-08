@@ -15,6 +15,7 @@ import { EmployeeService } from '../service/employee.service';
 export class AddemployeeComponent implements OnInit {
   employeeForm!: FormGroup;
   department$ = new Observable<IDepartment[]>();
+
   constructor(
     private fb: FormBuilder,
     private deptService : DepartmentService,
@@ -28,8 +29,8 @@ export class AddemployeeComponent implements OnInit {
   }
   initializeForm() :void {
     this.employeeForm = this.fb.group({
-      empName: new FormControl('',[Validators.required, Validators.maxLength(3), Validators.maxLength(10)]),
-      deptId :new FormControl(1,Validators.required),
+      empName: new FormControl('',[Validators.required, Validators.minLength(3), Validators.maxLength(10)]),
+      deptId :new FormControl(0, [Validators.required, Validators.min(1), Validators.max(999)]),
     });
   }
 
@@ -41,5 +42,5 @@ export class AddemployeeComponent implements OnInit {
      })
   }
   empName(){ return this.employeeForm.get('empName');}
-  dept(){ return this.employeeForm.get('deptId')}
+  deptId(){ return this.employeeForm.get('deptId')}
 }

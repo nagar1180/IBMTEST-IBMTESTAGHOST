@@ -1,4 +1,4 @@
-<h1>Welcome to employee</h1>
+<h1>Employees</h1>
 <br>
 <!-- <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
  Add Employee
@@ -26,7 +26,7 @@
       <td>{{emp.deptName}}</td>
       <td>
         <a [routerLink]="['/employee/edit', emp.empId]" class="btn btn-sm btn-primary">Edit</a>&nbsp;
-        <a class="btn btn-sm btn-danger" (click)="onDelete(emp.deptId)">Delete</a>&nbsp;
+        <a class="btn btn-sm btn-danger" (click)="onDelete(emp.empId)">Delete</a>&nbsp;
       </td>
     </tr>
   </tbody>

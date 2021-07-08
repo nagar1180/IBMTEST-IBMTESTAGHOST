@@ -10,6 +10,22 @@ export class DepartmentService {
   constructor(private http:HttpClient) { }
 
   getAll(){
-    return this.http.get<IDepartment[]>(`${this.baseUrl}departments`)
+    return this.http.get<IDepartment[]>(`${this.baseUrl}department`)
   }
+  getById(id : Number){
+    return this.http.get<IDepartment>(`${this.baseUrl}department/${id}`);
+   }
+
+   saveEmployee(data : IDepartment){
+     return this.http.post(`${this.baseUrl}department`, data);
+   }
+
+   update(id: Number, data: IDepartment){
+     console.log(data);
+    return this.http.post(`${this.baseUrl}department/${id}`, data);
+   }
+
+   delete(id: Number){
+    return this.http.delete(`${this.baseUrl}department/${id}`);
+   }
 }
